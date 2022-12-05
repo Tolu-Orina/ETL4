@@ -57,13 +57,16 @@ REDSHIFT Query
 
 - Create External Schema and New Database in Glue Catalog
 
+```
 CREATE EXTERNAL SCHEMA spectrum_schema
 FROM data catalog
 database 'accomodation'
 iam_role '<my-redshift-role>'
 CREATE EXTERNAL DATABASE IF NOT EXISTS;
+```
 
 - Define an external table
+```
 CREATE EXTERNAL TABLE spectrum_schema.listings(
  listing_id INTEGER,
  name VARCHAR(100),
@@ -86,7 +89,7 @@ row format delimited
 fields terminated by ','
 stored as textfile
 location 's3://etl-trex-landing-zone/listings/'; 
-
+```
 - Add Partitions
 ```
 alter table spectrum_schema.listings add
